@@ -1,0 +1,83 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Sarala:wght@400;700&display=swap');
+
+body {
+  font-size: 100%;
+  background: #08021f;
+  
+}
+
+
+
+/* 
+.contato{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Righteous', cursive;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    text-align: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  footer{
+    background-color: #08021f;
+    text-align: center;
+    padding: 10px;
+  }
+
+  
+  footer img{  
+    width: 50px;
+    margin: 15px 0;
+    transition: 0.3s;
+  }
+    
+  footer img:hover{  
+        transform: scale(1.2) rotate(360deg);
+  }
+  
+  .rede-social{
+    display: inline-block;
+    padding: 20px;
+  }
+  
+  .rede-social > a > img {
+    width: 55px;
+    height: 55px;
+  }
+  
+  footer p{
+    font-size: 13px;
+    font-style: italic;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+  }
+
+
+
+
+
+  @media only screen and (max-width: 720px){
+ 
+    .cabecalho{
+      display: flex;
+      justify-content:center;
+      flex-direction: column;
+      gap: 15px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+  .rede-social{
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    gap: 15px;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  } */
