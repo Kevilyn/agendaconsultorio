@@ -8,30 +8,30 @@ import java.util.List;
 
 public class PacienteService {
 
-    private IDao<Paciente> pacienteIDao;
+    private IDao<Paciente> pacienteDao;
 
     public PacienteService(IDao<Paciente> pacienteIDao) {
-        this.pacienteIDao = pacienteIDao;
+        this.pacienteDao = pacienteIDao;
     }
 
-    public Paciente salvar(Paciente paciente){
+    public Paciente salvarPaciente(Paciente paciente){
         paciente.setDataAlta(new Date());
-        return pacienteIDao.salvar(paciente);
+        return pacienteDao.salvar(paciente);
     }
 
-    public Paciente buscar(int id){
-        return pacienteIDao.buscar(id);
+    public Paciente buscarPaciente(int id){
+        return pacienteDao.buscar(id);
     }
 
-    public List<Paciente> buscarTodos(){
-        return pacienteIDao.buscarTodos();
+    public List<Paciente> buscarTodosPacientes(){
+        return pacienteDao.buscarTodos();
     }
 
-    public void deletar(int id){
-        pacienteIDao.deletar(id);
+    public void deletarPaciente(int id){
+        pacienteDao.deletar(id);
     }
 
-    public Paciente atualizar(Paciente paciente){
-        return pacienteIDao.atualizar(paciente);
+    public Paciente atualizarPaciente(Paciente paciente){
+        return pacienteDao.atualizar(paciente);
     }
 }
