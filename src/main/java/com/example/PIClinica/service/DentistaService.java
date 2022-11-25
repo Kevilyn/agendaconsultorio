@@ -1,9 +1,11 @@
 package com.example.PIClinica.service;
 
+import com.example.PIClinica.dto.DentistaDTO;
 import com.example.PIClinica.model.Dentista;
 import com.example.PIClinica.repository.IDao;
-import org.apache.catalina.LifecycleState;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DentistaService {
@@ -22,12 +24,19 @@ public class DentistaService {
         return dentistaDao.buscar(id);
     }
 
-    public List<Dentista> buscarTodosDentistas(){
-        return dentistaDao.buscarTodos();
+    public List<DentistaDTO> buscarTodosDentistas(){
+        ObjectMapper mapper = new ObjectMapper();
+        List<Dentista> dentistas = dentistaDao.buscarTodos();
+        List<DentistaDTO> dentistaDTOS = new ArrayList<>();
+        for(Dentista dentista:dentistas){
+            DentistaDTO dentistaDTO = mapper.convertValue(dentista, DentistaDTO.class);
+            dentistaDTOS.add(dentistaDTO);
+        }
+        return dentistaDTOS;
     }
 
-    public void deletarDentista(int id){
-        dentistaDao.deletar(id);
+    public Boolean deletarDentista(int id){
+        return dentistaDao.deletar(id);
     }
 
     public Dentista atualizarDentista(Dentista dentista){

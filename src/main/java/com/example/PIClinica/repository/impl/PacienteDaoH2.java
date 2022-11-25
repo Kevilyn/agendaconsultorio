@@ -79,7 +79,7 @@ public class PacienteDaoH2 implements IDao<Paciente> {
     }
 
     @Override
-    public void deletar(Integer id) {
+    public Boolean deletar(Integer id) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
@@ -94,6 +94,7 @@ public class PacienteDaoH2 implements IDao<Paciente> {
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
+        return null;
     }
 
     @Override

@@ -1,8 +1,11 @@
 package com.example.PIClinica.service;
 
+import com.example.PIClinica.dto.PacienteDTO;
 import com.example.PIClinica.model.Paciente;
 import com.example.PIClinica.repository.IDao;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,12 +26,19 @@ public class PacienteService {
         return pacienteDao.buscar(id);
     }
 
-    public List<Paciente> buscarTodosPacientes(){
-        return pacienteDao.buscarTodos();
+    public List<PacienteDTO> buscarTodosPacientes(){
+        ObjectMapper mapper = new ObjectMapper();
+        List<Paciente> pacientes = pacienteDao.buscarTodos();
+        List<PacienteDTO> pacienteDTOS = new ArrayList<>();
+        for(Paciente paciente:pacientes){
+            PacienteDTO pacienteDTO = mapper.convertValue(paciente, PacienteDTO.class);
+            pacienteDTOS.add(pacienteDTO);
+        }
+        return pacienteDTOS;
     }
 
-    public void deletarPaciente(int id){
-        pacienteDao.deletar(id);
+    public Boolean deletarPaciente(int id){
+       return pacienteDao.deletar(id);
     }
 
     public Paciente atualizarPaciente(Paciente paciente){

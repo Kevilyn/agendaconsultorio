@@ -80,7 +80,7 @@ public class DentistaDaoH2 implements IDao<Dentista> {
     }
 
     @Override
-    public void deletar(Integer id) {
+    public Boolean deletar(Integer id) {
         log.debug("Deletando dentista com id : "+id);
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -97,6 +97,7 @@ public class DentistaDaoH2 implements IDao<Dentista> {
             throwables.printStackTrace();
             log.error(throwables);
         }
+        return null;
     }
 
     @Override
