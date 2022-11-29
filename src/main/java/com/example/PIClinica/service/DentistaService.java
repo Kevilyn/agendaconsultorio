@@ -2,8 +2,11 @@ package com.example.PIClinica.service;
 
 import com.example.PIClinica.dto.DentistaDTO;
 import com.example.PIClinica.model.Dentista;
+import com.example.PIClinica.repository.DentistaRepository;
 import com.example.PIClinica.repository.IDao;
+import com.example.PIClinica.repository.PacienteRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,4 +45,15 @@ public class DentistaService {
     public Dentista atualizarDentista(Dentista dentista){
         return dentistaDao.atualizar(dentista);
     }
+
+    private DentistaRepository dentistaRepository;
+
+    @Autowired
+
+
+    private PacienteRepository pacienteRepository;
+    public Dentista buscarPorNome(String nome){
+        return dentistaRepository.findDentistaByNome(nome).get();
+    }
+
 }

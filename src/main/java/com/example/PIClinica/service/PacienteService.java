@@ -2,8 +2,11 @@ package com.example.PIClinica.service;
 
 import com.example.PIClinica.dto.PacienteDTO;
 import com.example.PIClinica.model.Paciente;
+import com.example.PIClinica.repository.DentistaRepository;
 import com.example.PIClinica.repository.IDao;
+import com.example.PIClinica.repository.PacienteRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,5 +46,12 @@ public class PacienteService {
 
     public Paciente atualizarPaciente(Paciente paciente){
         return pacienteDao.atualizar(paciente);
+    }
+
+    @Autowired
+
+    private PacienteRepository pacienteRepository;
+    public Paciente buscarPorNome(String nome){
+        return pacienteRepository.findPacienteByNome(nome).get();
     }
 }

@@ -1,10 +1,25 @@
 package com.example.PIClinica.model;
 
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "Dentista")
 public class Dentista {
+    @Id
+    @SequenceGenerator(name = "dentista_sequence",sequenceName = "dentista_sequence",allocationSize = 1)
+    //vai criar e controlar a criação do ids
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "dentista_sequence")
     private int id;
     private String nome;
     private String sobrenome;
     private int matriculaDentista;
+    @OneToMany(mappedBy = "dentista",fetch = FetchType.LAZY)
+    private Set<Paciente> pacientes = new HashSet<>();
+
+    public Dentista() {
+    }
 
     public Dentista(int id, String nome, String sobrenome, int matriculaDentista) {
         this.id = id;

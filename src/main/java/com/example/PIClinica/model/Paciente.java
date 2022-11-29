@@ -1,14 +1,27 @@
 package com.example.PIClinica.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "Paciente")
 public class Paciente {
+    @Id
+    @SequenceGenerator(name = "paciente_sequence",sequenceName = "paciente_sequence",allocationSize = 1)
+    //vai criar e controlar a criação do ids
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "paciente_sequence")
     private int id;
     private String nome;
     private String sobrenome;
     private String endereco;
     private int rg;
     private Date dataAlta;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "dentista_id")
+    private Dentista dentista;
+
+    public Paciente() {
+    }
 
     public Paciente(int id, String nome, String sobrenome, String endereco, int rg, Date dataAlta) {
         this.id = id;
